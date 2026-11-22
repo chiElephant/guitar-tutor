@@ -13,7 +13,7 @@ npm run dev
 ```
 
 `npm run check` type-checks, `npm run test` runs unit tests, `npm run build` produces the
-deployable `dist/` folder (Cloudflare Pages or any static host: build command `npm run build`,
+deployable `dist/` folder (Vercel or any static host: build command `npm run build`,
 output `dist`).
 
 ## Native apps (Capacitor)

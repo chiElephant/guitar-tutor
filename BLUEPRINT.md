@@ -153,9 +153,10 @@ Delcamp, Justin Guitar are free to view but *not* openly licensed: link, don't c
   - Rejected: Tauri mobile, Flutter, React Native, KMP all mean a second audio codebase.
 - **Stack:** Vite + TypeScript + Svelte 5 (alphaTab is imperative; a framework buys little),
   vite-plugin-pwa (Workbox) for offline, Dexie for local DB, Vitest for tests.
-- **Hosting:** Cloudflare Pages for the app and content ($0: unlimited static requests);
-  Workers + R2 + D1 free tiers cover a small API later. GitHub Pages is a fine fallback.
-  Fly.io has no free tier anymore; Hetzner's cheapest plan is currently unorderable.
+- **Hosting:** Vercel, team `303devs` (Anthony's decision 2026-11-22: the team already runs
+  Vercel and Ratchet watches its billing; the blueprint's original pick was Cloudflare Pages,
+  which stays the fallback). A static PWA fits the Hobby tier. GitHub Pages is a second
+  fallback. Fly.io has no free tier anymore; Hetzner's cheapest plan is currently unorderable.
 - **Licenses:** code AGPL-3.0 (keeps hosted forks open; MPL/MIT deps are compatible),
   content CC BY-SA 4.0 (matches Wikibooks/Open Music Theory so content can flow both ways).
 
@@ -164,8 +165,8 @@ Delcamp, Justin Guitar are free to view but *not* openly licensed: link, don't c
 ## 3. Phased plan
 
 **Phase 0 — Skeleton (week 1)**
-Repo, AGPL + CC BY-SA licenses, Vite/Svelte/TS, PWA manifest + service worker, Cloudflare
-Pages deploy, CI. One page that loads a Mutopia piece in alphaTab and plays it.
+Repo, AGPL + CC BY-SA licenses, Vite/Svelte/TS, PWA manifest + service worker, Vercel
+deploy, CI. One page that loads a Mutopia piece in alphaTab and plays it.
 
 **Phase 1 — Tuner + input + store shells (weeks 2–4)**
 Device picker, constraints off, AudioWorklet + pitchy, needle UI, iOS gesture handling,
@@ -232,6 +233,8 @@ editor · video lessons (link to YouTube instead).
 
 ## 6. Decisions taken (21 Nov 2026)
 - Ship as PWA **and** free App Store **and** Google Play apps from one codebase (Capacitor).
+- Web hosting is Vercel (team 303devs), not Cloudflare; iOS ships through the team's existing
+  App Store Connect account; Android through Anthony's Play Console (22 Nov 2026).
 - iPhone/iPad with a USB interface is a launch requirement → native iOS audio plugin in Phase 1.
 - Hosted catalog is legal-only (public domain, CC, user-original); private local import for
   everything else.
