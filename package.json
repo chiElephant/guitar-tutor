@@ -19,6 +19,7 @@
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "@tsconfig/svelte": "^5.0.8",
     "@types/node": "^24.19.2",
+    "fake-indexeddb": "^6.2.8",
     "svelte": "^5.57.3",
     "svelte-check": "^4.7.7",
     "typescript": "~6.0.3",
@@ -31,6 +32,9 @@
     "@coderline/alphatab": "^1.9.0",
     "@coderline/alphatab-vite": "^1.9.0",
     "dexie": "^4.4.7",
-    "pitchy": "^4.1.0"
+    "marked": "^18.2.1",
+    "pitchy": "^4.1.0",
+    "svguitar": "^2.11.0",
+    "ts-fsrs": "^6.0.0"
   }
 }

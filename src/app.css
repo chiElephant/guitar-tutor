@@ -28,3 +28,12 @@ label.button { font: inherit; padding: 0.5rem 1rem; border: 1px solid #999; bord
 .pieces .row { flex: 1; display: flex; justify-content: space-between; gap: 1rem; text-align: left; background: none; border: 0; padding: 0.75rem 0.25rem; cursor: pointer; }
 .pieces .composer { color: #666; }
 .pieces .delete { background: none; border: 0; color: #999; cursor: pointer; padding: 0.5rem; }
+article { max-width: 720px; margin: 0 auto; line-height: 1.5; }
+article .chords { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+article .chords figure { width: 150px; margin: 0; }
+article .fretboard svg { max-width: 100%; height: auto; }
+article .tex { margin: 1rem 0; }
+.rate { max-width: 720px; margin: 2rem auto; }
+.skill { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; padding: 0.4rem 0; border-top: 1px solid #eee; }
+.skill > span:first-child { flex: 1; font-family: ui-monospace, monospace; }
+h2, h3 { margin: 1.25rem 0 0.5rem; }

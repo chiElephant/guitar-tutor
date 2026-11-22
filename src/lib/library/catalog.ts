@@ -1,4 +1,4 @@
-import Dexie, { type EntityTable } from 'dexie'
+import { db } from '../db'
 
 export type Piece = {
   id: string
@@ -40,11 +40,7 @@ export const bundled: Piece[] = [
   }),
 ].sort((a, b) => a.title.localeCompare(b.title))
 
-/** Files the user imported stay on this device only (see BLUEPRINT.md 2.2). */
-export const db = new Dexie('guitar-tutor') as Dexie & {
-  imports: EntityTable<{ id: number; name: string; data: ArrayBuffer }, 'id'>
-}
-db.version(1).stores({ imports: '++id, name' })
+export { db }
 
 export async function importFile(file: File) {
   await db.imports.add({ name: file.name.replace(/\.[^.]+$/, ''), data: await file.arrayBuffer() })

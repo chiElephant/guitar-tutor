@@ -37,6 +37,10 @@ The 41 traditional tunes come from [thesession.org](https://thesession.org) (CC 
 `content/tabs/SOURCES.md`. Only public-domain, Creative Commons or your own original music
 is accepted; see `content/LICENSE` (CC BY-SA 4.0).
 
+Lessons live in `content/lessons/grade-<n>/` as Markdown with front matter; see
+`content/lessons/FORMAT.md` for the chord, alphaTex and fretboard blocks. `npm test` validates
+every lesson (alphaTex parses, chord names exist, piece links resolve).
+
 ## Licenses
 
 - Code: [AGPL-3.0-only](LICENSE)
