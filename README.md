@@ -12,8 +12,21 @@ npm install
 npm run dev
 ```
 
-`npm run check` type-checks, `npm run build` produces the deployable `dist/` folder
-(Cloudflare Pages or any static host: build command `npm run build`, output `dist`).
+`npm run check` type-checks, `npm run test` runs unit tests, `npm run build` produces the
+deployable `dist/` folder (Cloudflare Pages or any static host: build command `npm run build`,
+output `dist`).
+
+## Native apps (Capacitor)
+
+```bash
+npm run cap:sync        # build the web app and copy it into ios/ and android/
+npx cap open ios        # Xcode; needs Xcode 16+ (tested with 27)
+npx cap open android    # Android Studio; Gradle needs JDK 21, e.g.
+# JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home" ./gradlew assembleDebug
+```
+
+The only native code is `ios/App/App/AudioSession.swift`, which asks iOS to route a plugged-in
+USB audio interface to the WebView's microphone input (Safari cannot do this itself).
 
 ## Content
 

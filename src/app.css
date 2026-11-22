@@ -2,7 +2,20 @@
 /* shortcut: alphaTab draws black notation, so the page stays light; theme it via display.resources when dark mode is wanted */
 body { background: #fff; color: #111; }
 body { margin: 0; }
-header { display: flex; gap: 1rem; align-items: center; padding: 0.75rem 1rem; }
+header { display: flex; gap: 1rem; align-items: center; padding: calc(0.75rem + env(safe-area-inset-top)) 1rem 0.75rem; }
 h1 { font-size: 1.25rem; margin: 0; flex: 1; }
 button { font: inherit; padding: 0.5rem 1rem; }
 main { padding: 0 1rem; }
+nav button.active { font-weight: bold; }
+.dial { position: relative; margin: 1rem auto; max-width: 320px; text-align: center; padding-top: 1rem; }
+.scale { display: flex; justify-content: space-between; font-size: 0.8rem; color: #666; padding: 0 1rem; }
+.needle { width: 3px; height: 90px; margin: 0 auto; background: #c33; transform-origin: bottom center; transition: transform 80ms linear; }
+.dial.good .needle { background: #2a9d4b; }
+.note { font-size: 3rem; font-weight: bold; }
+.dial.good .note { color: #2a9d4b; }
+.cents { color: #666; }
+.controls { display: flex; gap: 0.5rem; justify-content: center; margin: 1rem 0; }
+select { font: inherit; padding: 0.5rem; max-width: 60vw; }
+.hint { text-align: center; color: #666; font-size: 0.9rem; }
+.error { color: #c33; text-align: center; }
+details { max-width: 480px; margin: 1rem auto; }

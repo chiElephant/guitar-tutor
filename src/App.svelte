@@ -1,33 +1,17 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
-  import * as alphaTab from '@coderline/alphatab'
-  import odeToJoy from '../content/tabs/ode-to-joy.alphatex?raw'
+  import Tuner from './lib/tuner/Tuner.svelte'
+  import TabDemo from './lib/TabDemo.svelte'
 
-  let host: HTMLElement
-  let api: alphaTab.AlphaTabApi
-  let ready = $state(false)
-  let playing = $state(false)
-
-  onMount(() => {
-    api = new alphaTab.AlphaTabApi(host, {
-      player: {
-        playerMode: alphaTab.PlayerMode.EnabledAutomatic,
-        soundFont: '/soundfont/sonivox.sf3',
-        scrollElement: 'html',
-      },
-    })
-    api.playerReady.on(() => (ready = true))
-    api.playerStateChanged.on((e) => (playing = e.state === alphaTab.synth.PlayerState.Playing))
-    api.tex(odeToJoy)
-    return () => api.destroy()
-  })
+  let view = $state<'tuner' | 'tabs'>('tuner')
 </script>
 
 <header>
   <h1>Guitar Tutor</h1>
-  <!-- A user gesture is required before audio can start (iOS); the click provides it. -->
-  <button onclick={() => api.playPause()} disabled={!ready}>
-    {ready ? (playing ? 'Pause' : 'Play') : 'Loading sounds…'}
-  </button>
+  <nav>
+    <button class:active={view === 'tuner'} onclick={() => (view = 'tuner')}>Tuner</button>
+    <button class:active={view === 'tabs'} onclick={() => (view = 'tabs')}>Tabs</button>
+  </nav>
 </header>
-<main bind:this={host}></main>
+<main>
+  {#if view === 'tuner'}<Tuner />{:else}<TabDemo />{/if}
+</main>
