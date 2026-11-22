@@ -4,7 +4,7 @@ We only host public-domain, Creative Commons and contributor-owned music, and we
 anything that does not meet that bar as soon as we learn of it.
 
 To report content you believe infringes your copyright, open a GitHub issue titled
-`Takedown: <title>` or email the maintainers (address in the repository profile) with:
+`Takedown: <title>` at https://github.com/chiElephant/guitar-tutor/issues with:
 
 1. The URL or file path of the content.
 2. The work you believe is infringed and your relationship to it.
