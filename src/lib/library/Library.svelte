@@ -2,7 +2,7 @@
   import { liveQuery } from 'dexie'
   import { bundled, db, importFile, type Piece } from './catalog'
 
-  let { onopen }: { onopen: (p: Piece) => void } = $props()
+  let { onopen, onnew }: { onopen: (p: Piece) => void; onnew: () => void } = $props()
   let query = $state('')
   const imports = liveQuery(() => db.imports.toArray())
 
@@ -21,6 +21,7 @@
 
 <div class="toolbar">
   <input type="search" placeholder="Search title or composer" bind:value={query} />
+  <button onclick={onnew}>New tab</button>
   <label class="button">
     Import file
     <input type="file" accept=".gp,.gp3,.gp4,.gp5,.gpx,.musicxml,.xml,.mxl,.alphatex" multiple onchange={onfile} hidden />

@@ -6,6 +6,7 @@
   import Lesson from './lib/lessons/Lesson.svelte'
   import Practice from './lib/practice/Practice.svelte'
   import Record from './lib/recorder/Record.svelte'
+  import Editor from './lib/editor/Editor.svelte'
   import { bundled, type Piece } from './lib/library/catalog'
   import type { Lesson as LessonT } from './lib/lessons/catalog'
 
@@ -14,8 +15,9 @@
   let view = $state<View>('lessons')
   let piece = $state<Piece | null>(null)
   let lesson = $state<LessonT | null>(null)
+  let editing = $state(false)
 
-  function go(v: View) { view = v; piece = null; lesson = null }
+  function go(v: View) { view = v; piece = null; lesson = null; editing = false }
   function openLesson(l: LessonT) { view = 'lessons'; lesson = l }
   function openPieceSlug(slug: string) {
     const p = bundled.find((b) => b.id === slug)
@@ -44,7 +46,9 @@
     {/if}
   {:else if piece}
     {#key piece.id}<Player {piece} onback={() => (piece = null)} />{/key}
+  {:else if editing}
+    <Editor onback={() => (editing = false)} />
   {:else}
-    <Library onopen={(p) => (piece = p)} />
+    <Library onopen={(p) => (piece = p)} onnew={() => (editing = true)} />
   {/if}
 </main>

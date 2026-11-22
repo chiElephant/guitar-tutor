@@ -43,3 +43,8 @@ h2, h3 { margin: 1.25rem 0 0.5rem; }
 .takes li { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; border-bottom: 1px solid #eee; padding: 0.5rem 0; }
 .takes .title { flex: 1; min-width: 10rem; }
 .takes audio { height: 2rem; max-width: 100%; }
+.editor { display: grid; grid-template-columns: minmax(16rem, 1fr) 2fr; gap: 1rem; }
+@media (max-width: 800px) { .editor { grid-template-columns: 1fr; } }
+.editor textarea { font: 13px/1.4 ui-monospace, monospace; padding: 0.5rem; resize: vertical; }
+.propose { max-width: 720px; margin: 2rem auto; display: grid; gap: 0.5rem; }
+.propose input[type="text"], .propose input:not([type]) { font: inherit; padding: 0.4rem; width: 100%; max-width: 20rem; }
