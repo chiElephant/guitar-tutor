@@ -31,8 +31,11 @@ USB audio interface to the WebView's microphone input (Safari cannot do this its
 ## Content
 
 Tabs live in `content/tabs/` as [alphaTex](https://alphatab.net/docs/alphatex/introduction)
-files. Only public-domain, Creative Commons or your own original music is accepted; see
-`content/LICENSE` (CC BY-SA 4.0).
+or MusicXML files, each MusicXML with a `.json` sidecar (title, composer, source, license).
+The 41 traditional tunes come from [thesession.org](https://thesession.org) (CC BY-SA) via
+`scripts/import-thesession.py`, which also assigns guitar strings and frets; see
+`content/tabs/SOURCES.md`. Only public-domain, Creative Commons or your own original music
+is accepted; see `content/LICENSE` (CC BY-SA 4.0).
 
 ## Licenses
 

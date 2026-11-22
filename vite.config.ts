@@ -20,7 +20,7 @@ export default defineConfig({
       },
       workbox: {
         // soundfont + Bravura font are what make offline playback work
-        globPatterns: ['**/*.{js,css,html,svg,woff2,sf2,alphatex}'],
+        globPatterns: ['**/*.{js,css,html,svg,woff2,sf2,sf3,alphatex,musicxml}'],
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
       },
     }),

@@ -30,6 +30,7 @@
     "@capacitor/core": "^8.6.2",
     "@coderline/alphatab": "^1.9.0",
     "@coderline/alphatab-vite": "^1.9.0",
+    "dexie": "^4.4.7",
     "pitchy": "^4.1.0"
   }
 }
