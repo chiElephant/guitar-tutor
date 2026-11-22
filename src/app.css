@@ -37,3 +37,9 @@ article .tex { margin: 1rem 0; }
 .skill { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; padding: 0.4rem 0; border-top: 1px solid #eee; }
 .skill > span:first-child { flex: 1; font-family: ui-monospace, monospace; }
 h2, h3 { margin: 1.25rem 0 0.5rem; }
+.rec { color: #c33; }
+.rec.on { background: #c33; color: #fff; }
+.takes { list-style: none; padding: 0; margin: 0.5rem 0; }
+.takes li { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; border-bottom: 1px solid #eee; padding: 0.5rem 0; }
+.takes .title { flex: 1; min-width: 10rem; }
+.takes audio { height: 2rem; max-width: 100%; }

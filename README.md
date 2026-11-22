@@ -41,6 +41,11 @@ Lessons live in `content/lessons/grade-<n>/` as Markdown with front matter; see
 `content/lessons/FORMAT.md` for the chord, alphaTex and fretboard blocks. `npm test` validates
 every lesson (alphaTex parses, chord names exist, piece links resolve).
 
+Recordings are captured through an AudioWorklet (`public/recorder.worklet.js`), saved as WAV in
+IndexedDB on the device, and trimmed by the measured output + input latency so a take lines up
+with the tab it was played against. `npm run preview` serves the production build; check it
+rather than only the dev server, since asset paths differ.
+
 ## Licenses
 
 - Code: [AGPL-3.0-only](LICENSE)

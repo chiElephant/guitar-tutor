@@ -5,11 +5,12 @@
   import Lessons from './lib/lessons/Lessons.svelte'
   import Lesson from './lib/lessons/Lesson.svelte'
   import Practice from './lib/practice/Practice.svelte'
+  import Record from './lib/recorder/Record.svelte'
   import { bundled, type Piece } from './lib/library/catalog'
   import type { Lesson as LessonT } from './lib/lessons/catalog'
 
-  type View = 'lessons' | 'library' | 'tuner' | 'practice'
-  const tabs: [View, string][] = [['lessons', 'Lessons'], ['library', 'Tabs'], ['tuner', 'Tuner'], ['practice', 'Practice']]
+  type View = 'lessons' | 'library' | 'tuner' | 'record' | 'practice'
+  const tabs: [View, string][] = [['lessons', 'Lessons'], ['library', 'Tabs'], ['tuner', 'Tuner'], ['record', 'Record'], ['practice', 'Practice']]
   let view = $state<View>('lessons')
   let piece = $state<Piece | null>(null)
   let lesson = $state<LessonT | null>(null)
@@ -31,6 +32,8 @@
 <main>
   {#if view === 'tuner'}
     <Tuner />
+  {:else if view === 'record'}
+    <Record />
   {:else if view === 'practice'}
     <Practice onopen={openLesson} />
   {:else if view === 'lessons'}

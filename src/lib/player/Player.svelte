@@ -1,7 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import * as alphaTab from '@coderline/alphatab'
+  import { createApi } from '../alphatab'
   import type { Piece } from '../library/catalog'
+  import Recorder from '../recorder/Recorder.svelte'
 
   let { piece, onback }: { piece: Piece; onback: () => void } = $props()
 
@@ -14,11 +16,10 @@
   let loop = $state(false)
   let metronome = $state(false)
   let countIn = $state(false)
+  let error = $state('')
 
   onMount(() => {
-    api = new alphaTab.AlphaTabApi(host, {
-      player: { playerMode: alphaTab.PlayerMode.EnabledAutomatic, soundFont: '/soundfont/sonivox.sf3', scrollElement: 'html' },
-    })
+    api = createApi(host)
     api.playerReady.on(() => (ready = true))
     api.playerStateChanged.on((e) => (playing = e.state === alphaTab.synth.PlayerState.Playing))
     api.scoreLoaded.on((score) => {
@@ -31,7 +32,7 @@
       }
       tracks = score.tracks.map((t) => ({ name: t.name || `Track ${t.index + 1}`, muted: false }))
     })
-    api.error.on((e) => console.error('alphaTab', e))
+    api.error.on((e) => (error = String(e)))
     if (piece.kind === 'tex') api.tex(piece.data as string)
     else api.load(piece.kind === 'bytes' ? new Uint8Array(piece.data as ArrayBuffer) : piece.data)
     return () => api.destroy()
@@ -63,4 +64,6 @@
   {/if}
 </div>
 <p class="hint">Drag across bars on the score to pick a section; Loop repeats it.</p>
+{#if error}<p class="error">{error}</p>{/if}
+<Recorder pieceId={piece.id} title={piece.title} onstart={() => api.play()} onstop={() => api.stop()} />
 <div bind:this={host}></div>

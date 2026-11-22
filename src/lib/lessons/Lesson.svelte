@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
   import { SVGuitarChord } from 'svguitar'
   import * as alphaTab from '@coderline/alphatab'
+  import { createApi } from '../alphatab'
   import type { Lesson } from './catalog'
   import { chords } from './chords'
   import { fretboardSvg } from './scales'
@@ -33,9 +34,7 @@
       button.textContent = 'Play'
       button.disabled = true
       const score = el.appendChild(document.createElement('div'))
-      const api = new alphaTab.AlphaTabApi(score, {
-        player: { playerMode: alphaTab.PlayerMode.EnabledAutomatic, soundFont: '/soundfont/sonivox.sf3', scrollElement: 'html' },
-      })
+      const api = createApi(score)
       api.playerReady.on(() => (button.disabled = false))
       api.playerStateChanged.on((e) => (button.textContent = e.state === alphaTab.synth.PlayerState.Playing ? 'Pause' : 'Play'))
       button.onclick = () => api.playPause()

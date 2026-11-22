@@ -1,6 +1,6 @@
 import { configureNativeAudio } from './native'
 
-export type Input = { context: AudioContext; analyser: AnalyserNode; stream: MediaStream; label: string }
+export type Input = { context: AudioContext; analyser: AnalyserNode; splitter: ChannelSplitterNode; stream: MediaStream; label: string }
 
 /** Enumerate audio inputs. Labels are empty until the user has granted mic permission once. */
 export async function listInputs(): Promise<MediaDeviceInfo[]> {
@@ -33,7 +33,7 @@ export async function openInput(deviceId?: string): Promise<Input> {
   context.createMediaStreamSource(stream).connect(splitter)
   splitter.connect(analyser, 0)
   const label = stream.getAudioTracks()[0]?.label ?? 'microphone'
-  return { context, analyser, stream, label }
+  return { context, analyser, splitter, stream, label }
 }
 
 export function closeInput(input: Input) {
