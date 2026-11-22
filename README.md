@@ -48,7 +48,7 @@ rather than only the dev server, since asset paths differ.
 
 ## Licenses
 
-- Code: [AGPL-3.0-only](LICENSE). App-store distribution terms are pending; see
-  [LICENSE-EXCEPTIONS.md](LICENSE-EXCEPTIONS.md) before assuming pure AGPL for store builds.
+- Code: [AGPL-3.0-only](LICENSE), with an app-store distribution exception for official
+  builds; see [LICENSE-EXCEPTIONS.md](LICENSE-EXCEPTIONS.md).
 - Content (`content/`): [CC BY-SA 4.0](content/LICENSE)
 - Bundled: alphaTab (MPL-2.0), Bravura font (OFL), SONiVOX soundfont (Apache-2.0)
