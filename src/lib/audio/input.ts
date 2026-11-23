@@ -14,7 +14,7 @@ export async function listInputs(): Promise<MediaDeviceInfo[]> {
  * would hide dynamics. On a native shell this first asks iOS to route a USB interface.
  */
 export async function openInput(deviceId?: string): Promise<Input> {
-  await configureNativeAudio()
+  const native = await configureNativeAudio()
   const stream = await navigator.mediaDevices.getUserMedia({
     audio: {
       deviceId: deviceId ? { exact: deviceId } : undefined,
@@ -32,7 +32,9 @@ export async function openInput(deviceId?: string): Promise<Input> {
   const splitter = context.createChannelSplitter(2)
   context.createMediaStreamSource(stream).connect(splitter)
   splitter.connect(analyser, 0)
-  const label = stream.getAudioTracks()[0]?.label ?? 'microphone'
+  // iOS: WebKit labels the track "iPhone Microphone" whatever the route, so show the port iOS actually chose.
+  const track = stream.getAudioTracks()[0]?.label ?? 'microphone'
+  const label = native?.input ? `${native.input} via ${track}` : track
   return { context, analyser, splitter, stream, label }
 }
 
