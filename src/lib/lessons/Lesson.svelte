@@ -21,7 +21,7 @@
         const shape = chords[name]
         const box = el.appendChild(document.createElement('figure'))
         if (!shape) { box.textContent = `? ${name}`; continue }
-        new SVGuitarChord(box).chord({ ...shape, title: name }).configure({ frets: 4, fretSize: 1.2, fingerSize: 0.6, titleFontSize: 48 }).draw()
+        new SVGuitarChord(box).chord({ ...shape, title: name }).configure({ frets: 4, fretSize: 1.2, fingerSize: 0.6, titleFontSize: 48, color: '#ece9f7', fingerColor: '#d7ff3c', fingerTextColor: '#151a00' }).draw()
       }
     }
     for (const el of host.querySelectorAll<HTMLElement>('.fretboard')) {
@@ -31,6 +31,7 @@
     }
     for (const el of host.querySelectorAll<HTMLElement>('.tex')) {
       const button = el.appendChild(document.createElement('button'))
+      button.className = 'primary'
       button.textContent = 'Play'
       button.disabled = true
       const score = el.appendChild(document.createElement('div'))
@@ -56,7 +57,7 @@
 </script>
 
 <div class="toolbar">
-  <button onclick={onback}>‹ Lessons</button>
+  <button class="back" onclick={onback}>‹ Lessons</button>
   <span class="hint">Grade {lesson.grade} · Module {lesson.module} · {lesson.minutes} min</span>
 </div>
 <article bind:this={host}>

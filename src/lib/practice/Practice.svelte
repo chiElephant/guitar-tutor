@@ -14,7 +14,6 @@
   const lessonFor = (s: { id: string; lessonId: string }) => lessonById(s.lessonId) ?? lessonForSkill(s.id)
 </script>
 
-<h2>Practice</h2>
 <p class="hint">{($skills ?? []).length} skills started · practised on {days} of the last 7 days</p>
 
 <h3>Due now</h3>

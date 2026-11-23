@@ -11,7 +11,13 @@
   import type { Lesson as LessonT } from './lib/lessons/catalog'
 
   type View = 'lessons' | 'library' | 'tuner' | 'record' | 'practice'
-  const tabs: [View, string][] = [['lessons', 'Lessons'], ['library', 'Tabs'], ['tuner', 'Tuner'], ['record', 'Record'], ['practice', 'Practice']]
+  const tabs: [View, string, string, string][] = [
+    ['lessons', 'Lessons', 'Learn at your own pace', 'A clear path from your first notes to the songs you want to play.'],
+    ['library', 'Tabs', 'Your music library', 'Find a tune, or bring in a file from your own collection.'],
+    ['tuner', 'Tuner', 'Get in tune', 'Play one string at a time. Tune when the needle settles in the centre.'],
+    ['record', 'Record', 'Capture and replay', 'Record from your mic or interface. Open a tab to record alongside its playback.'],
+    ['practice', 'Practice', 'Spaced review', 'Return to skills you have rated when they come due.'],
+  ]
   let view = $state<View>('lessons')
   let piece = $state<Piece | null>(null)
   let lesson = $state<LessonT | null>(null)
@@ -26,12 +32,17 @@
 </script>
 
 <header>
-  <h1>Guitar Tutor</h1>
+  <div class="brand"><span class="mark">♪</span><div><h1>Guitar Tutor</h1><small>Your practice room</small></div></div>
   <nav>
     {#each tabs as [v, label] (v)}<button class:active={view === v} onclick={() => go(v)}>{label}</button>{/each}
   </nav>
+  <p class="local">Local first: your imports, recordings and practice history stay on this device.</p>
 </header>
 <main>
+  {#if !piece && !lesson && !editing}
+    {@const [, label, kicker, tagline] = tabs.find((t) => t[0] === view)!}
+    <hgroup><p class="kicker">{kicker}</p><h2>{label}</h2><p>{tagline}</p></hgroup>
+  {/if}
   {#if view === 'tuner'}
     <Tuner />
   {:else if view === 'record'}

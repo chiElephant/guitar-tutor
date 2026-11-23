@@ -59,9 +59,9 @@
       {/each}
     </select>
     {#if input}
-      <button onclick={stop}>Stop</button>
+      <button class="primary" onclick={stop}>Stop</button>
     {:else}
-      <button onclick={start}>Start tuner</button>
+      <button class="primary" onclick={start}>Start tuner</button>
     {/if}
   </div>
   {#if input}<p class="hint">Listening on: {input.label} at {input.context.sampleRate / 1000} kHz</p>{/if}

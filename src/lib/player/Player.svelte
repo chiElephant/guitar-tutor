@@ -50,8 +50,8 @@
 </script>
 
 <div class="toolbar">
-  <button onclick={onback}>‹ Library</button>
-  <button onclick={() => api.playPause()} disabled={!ready}>{ready ? (playing ? 'Pause' : 'Play') : 'Loading…'}</button>
+  <button class="back" onclick={onback}>‹ Library</button>
+  <button class="primary" onclick={() => api.playPause()} disabled={!ready}>{ready ? (playing ? 'Pause' : 'Play') : 'Loading…'}</button>
   <button onclick={() => api.stop()} disabled={!ready}>Stop</button>
   <label>Tempo <input type="range" min="0.25" max="1.5" step="0.05" bind:value={speed} /> {Math.round(speed * 100)}%</label>
   <label><input type="checkbox" bind:checked={loop} /> Loop</label>
@@ -66,4 +66,4 @@
 <p class="hint">Drag across bars on the score to pick a section; Loop repeats it.</p>
 {#if error}<p class="error">{error}</p>{/if}
 <Recorder pieceId={piece.id} title={piece.title} onstart={() => api.play()} onstop={() => api.stop()} />
-<div bind:this={host}></div>
+<div class="sheet" bind:this={host}></div>

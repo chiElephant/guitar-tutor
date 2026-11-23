@@ -22,7 +22,7 @@
 <div class="toolbar">
   <input type="search" placeholder="Search title or composer" bind:value={query} />
   <button onclick={onnew}>New tab</button>
-  <label class="button">
+  <label class="button primary">
     Import file
     <input type="file" accept=".gp,.gp3,.gp4,.gp5,.gpx,.musicxml,.xml,.mxl,.alphatex" multiple onchange={onfile} hidden />
   </label>

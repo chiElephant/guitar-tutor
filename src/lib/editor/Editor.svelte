@@ -60,7 +60,7 @@
 </script>
 
 <div class="toolbar">
-  <button onclick={onback}>‹ Library</button>
+  <button class="back" onclick={onback}>‹ Library</button>
   <button onclick={() => (text = asciiToTex(text, meta.title))} disabled={!isAscii} title="Turns pasted ASCII tab into alphaTex">Convert ASCII tab</button>
   <button onclick={save}>Save to my library</button>
   <a href="https://alphatab.net/docs/alphatex/introduction" target="_blank" rel="noopener">alphaTex reference</a>
