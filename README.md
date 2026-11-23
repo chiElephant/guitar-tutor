@@ -3,6 +3,8 @@
 Free, open-source guitar tutor: lessons, tabs and sheet music, tuner, recorder and practice
 tools. Ships as a PWA and as free iOS and Android apps from one codebase.
 
+**Try it:** <https://guitar-tutor.303devs.com> (installs as a PWA; iOS and Android store builds to follow).
+
 See [BLUEPRINT.md](BLUEPRINT.md) for the plan and the reasoning behind every choice.
 
 ## Develop
