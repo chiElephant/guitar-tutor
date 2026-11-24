@@ -29,6 +29,7 @@ npx cap open android    # Android Studio; Gradle needs JDK 21, e.g.
 
 The only native code is `ios/App/App/AudioSession.swift`, which asks iOS to route a plugged-in
 USB audio interface to the WebView's microphone input (Safari cannot do this itself).
+To check that on a real iPhone, follow [docs/device-test.md](docs/device-test.md).
 
 ## Content
 
